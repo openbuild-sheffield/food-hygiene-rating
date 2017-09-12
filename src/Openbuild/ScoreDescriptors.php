@@ -17,7 +17,7 @@ class ScoreDescriptors extends Command
 
     private function writePre()
     {
-        copy('/templates/ScoreDescriptors.postgres.pre.sql', '/export/005.ScoreDescriptors');
+        copy('/templates/ScoreDescriptors.postgres.pre.sql', '/export/005.ScoreDescriptors.sql');
         $this->fileHandle = fopen('/export/005.ScoreDescriptors.sql', 'a+');
     }
 
