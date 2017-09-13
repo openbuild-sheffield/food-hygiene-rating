@@ -14,6 +14,7 @@ class Establishments extends Command
     use ShowMenu;
 
     private $fileHandle;
+    private $cache = false;
 
     private function writePre()
     {
@@ -34,6 +35,10 @@ class Establishments extends Command
 
     private function processedLocal($data)
     {
+
+        if($this->cache === false){
+            return false;
+        }
 
         if(is_object($data) && isset($data->FHRSID) && isset($data->RatingDate)){
 
@@ -101,7 +106,7 @@ VALUES ((SELECT uuid_generate_v5(uuid_ns_url(), ('http://api.ratings.food.gov.uk
             )
         );
 
-        if($save){
+        if($save && $this->cache){
 
             $localPath = '/downloads/' . implode('/', str_split($dataEstablishment->FHRSID)) . '.json';
 
