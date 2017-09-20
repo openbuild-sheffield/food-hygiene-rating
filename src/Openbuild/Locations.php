@@ -18,7 +18,7 @@ class Locations extends Command
     private function writePre()
     {
         copy('/templates/Locations.postgres.pre.sql', '/export/003.Locations.sql');
-        $this->fileHandle = fopen('/export/004.Locations.sql', 'a+');
+        $this->fileHandle = fopen('/export/003.Locations.sql', 'a+');
     }
 
     private function writeData($string)
